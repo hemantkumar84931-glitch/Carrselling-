@@ -23,10 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-CHANGE-THIS-LATER'
 DEBUG = False
 
-ALLOWED_HOSTS = [
-    "carrselling.onrender.com",
-    "localhost",
-    "127.0.0.1",
+ALLOWED_HOSTS = ["carrselling-2.onrender.com"]
 ]
 
 # Application definition

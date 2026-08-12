@@ -24,7 +24,6 @@ SECRET_KEY = 'django-insecure-CHANGE-THIS-LATER'
 DEBUG = False
 
 ALLOWED_HOSTS = ["carrselling-2.onrender.com"]
-]
 
 # Application definition
 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Car</title>
+</head>
+<body>
+
+<h1>✏️ Edit Car</h1>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <input type="text" name="company" value="{{ car.company }}" required>
+    <br><br>
+
+    <input type="text" name="model" value="{{ car.model }}" required>
+    <br><br>
+
+    <input type="number" name="year" value="{{ car.year }}" required>
+    <br><br>
+
+    <input type="number" name="price" value="{{ car.price }}" required>
+    <br><br>
+
+    <input type="tel" name="phone" value="{{ car.phone }}" required>
+    <br><br>
+
+    <textarea name="description" required>{{ car.description }}</textarea>
+    <br><br>
+
+    <button type="submit">💾 Save Changes</button>
+</form>
+
+<br>
+
+<a href="{% url 'my_cars' %}">← Back</a>
+
+</body>
+</html>

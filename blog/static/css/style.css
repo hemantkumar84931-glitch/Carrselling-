@@ -1,0 +1,186 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+}
+
+/* Navbar */
+.navbar {
+    background: #111827;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.navbar a:hover {
+    color: #38bdf8;
+}
+
+/* Main */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+/* Search */
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin: 25px 0;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 13px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.search-box button {
+    padding: 13px 22px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+}
+
+/* Car Grid */
+.car-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+/* Car Card */
+.car-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.car-card img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+}
+
+.car-info {
+    padding: 18px;
+}
+
+.car-info h2 {
+    margin-bottom: 10px;
+}
+
+.price {
+    color: #16a34a;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 16px;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    border-radius: 7px;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background: #1d4ed8;
+}
+
+/* Detail Card */
+.detail-card {
+    background: white;
+    max-width: 900px;
+    margin: 25px auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+}
+
+.detail-image {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+}
+
+.detail-info {
+    padding: 25px;
+}
+
+.detail-info h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.detail-info p {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+.detail-buttons {
+    margin-top: 20px;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .navbar a {
+        margin: 5px;
+        font-size: 14px;
+    }
+
+    .container {
+        width: 94%;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    .search-box button {
+        width: 100%;
+    }
+
+    .detail-info h1 {
+        font-size: 25px;
+    }
+
+    .detail-buttons .btn {
+        display: block;
+        text-align: center;
+    }
+}

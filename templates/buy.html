@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buy Cars</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="navbar">
+    <a href="/">🏠 Home</a>
+    <a href="/buy/">🚗 Buy Cars</a>
+    <a href="/sell/">➕ Sell Car</a>
+    <a href="/my-cars/">📋 My Cars</a>
+    <a href="/logout/">🚪 Logout</a>
+</div>
+
+<div class="container">
+
+<h1>🚗 Buy Cars</h1>
+
+<form method="GET">
+
+    <input type="text"
+           name="q"
+           placeholder="Search company or model"
+           value="{{ query }}">
+
+    <input type="number"
+           name="max_price"
+           placeholder="Max Price"
+           value="{{ max_price }}">
+
+    <input type="number"
+           name="min_year"
+           placeholder="Min Year"
+           value="{{ min_year }}">
+    <br><br>
+
+<select name="company">
+    <option value="">All Companies</option>
+    <option value="Maruti">Maruti</option>
+    <option value="Hyundai">Hyundai</option>
+    <option value="Tata">Tata</option>
+    <option value="Mahindra">Mahindra</option>
+</select>
+
+<select name="year">
+    <option value="">Any Year</option>
+    <option value="2024">2024</option>
+    <option value="2023">2023</option>
+    <option value="2022">2022</option>
+    <option value="2021">2021</option>
+</select>
+
+    <button type="submit" class="btn">Search</button>
+
+</form>
+
+<br>
+
+{% if cars %}
+
+{% for car in cars %}
+
+<div class="card">
+
+{% if car.image %}
+<img src="{{ car.image.url }}">
+{% endif %}
+
+<h2>
+    {{ car.company }} {{ car.model }}
+
+    {% if car.featured %}
+        <span class="featured">⭐ Featured</span>
+    {% endif %}
+</h2>
+
+<p>📅 Year : {{ car.year }}</p>
+
+<p>💰 Price : ₹{{ car.price }}</p>
+
+<p>{{ car.description|truncatewords:20 }}</p>
+
+<a class="btn" href="{% url 'car_detail' car.id %}">
+View Details
+<a class="btn" href="{% url 'toggle_wishlist' car.id %}">
+❤️ Wishlist
+</a>
+</a>
+
+</div>
+
+{% endfor %}
+
+{% else %}
+
+<h2>No Cars Found</h2>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>

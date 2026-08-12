@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Reselling</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="navbar">
+    <a href="/">🏠 Home</a>
+    <a href="/buy/">🚗 Buy Cars</a>
+    <a href="/sell/">➕ Sell Car</a>
+    <a href="/my-cars/">📋 My Cars</a>
+    <a href="/logout/">🚪 Logout</a>
+    <a href="/profile/">👤 Profile</a>
+</div>
+
+<div class="container">
+
+<h1>🚗 Car Reselling Website</h1>
+<p>Buy & Sell Used Cars Easily</p>
+
+<hr>
+
+<h2>⭐ Featured Cars</h2>
+
+{% for car in featured_cars %}
+<div class="card">
+
+{% if car.image %}
+<img src="{{ car.image.url }}">
+{% endif %}
+
+<h3>{{ car.company }} {{ car.model }}</h3>
+
+<p>📅 {{ car.year }}</p>
+
+<p>💰 ₹{{ car.price }}</p>
+
+<a class="btn" href="{% url 'car_detail' car.id %}">
+View Details
+</a>
+
+</div>
+
+{% empty %}
+<p>No Featured Cars Available.</p>
+{% endfor %}
+
+<hr>
+
+<h2>🔥 Latest Cars</h2>
+
+{% for car in latest_cars %}
+<div class="card">
+
+{% if car.image %}
+<img src="{{ car.image.url }}">
+{% endif %}
+
+<h3>{{ car.company }} {{ car.model }}</h3>
+
+<p>📅 {{ car.year }}</p>
+
+<p>💰 ₹{{ car.price }}</p>
+
+<a class="btn" href="{% url 'car_detail' car.id %}">
+View Details
+</a>
+
+</div>
+
+{% empty %}
+<p>No Cars Available.</p>
+{% endfor %}
+
+</div>
+<footer class="footer">
+    <p>© 2026 CarReselling | Made by Hemant Kumar</p>
+</footer>
+</body>
+</html>

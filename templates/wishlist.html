@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Wishlist</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="navbar">
+    <a href="/">🏠 Home</a>
+    <a href="/buy/">🚗 Buy Cars</a>
+    <a href="/my-wishlist/">❤️ Wishlist</a>
+    <a href="/my-cars/">📋 My Cars</a>
+</div>
+
+<div class="container">
+
+<h1>❤️ My Wishlist</h1>
+
+{% for item in wishlist %}
+
+<div class="card">
+
+{% if item.car.image %}
+<img src="{{ item.car.image.url }}">
+{% endif %}
+
+<h2>{{ item.car.company }} {{ item.car.model }}</h2>
+
+<p>📅 {{ item.car.year }}</p>
+
+<p>💰 ₹{{ item.car.price }}</p>
+
+<a class="btn" href="{% url 'car_detail' item.car.id %}">
+View Details
+</a>
+
+</div>
+
+{% empty %}
+
+<h2>Your Wishlist is Empty.</h2>
+
+{% endfor %}
+
+</div>
+
+</body>
+</html>

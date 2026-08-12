@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ car.company }} {{ car.model }} - CarResell</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="logo">🚗 CarResell</div>
+
+    <div>
+        <a href="/">🏠 Home</a>
+        <a href="/buy/">🚗 Buy Cars</a>
+        <a href="/sell/">➕ Sell Car</a>
+        <a href="/my-cars/">📋 My Cars</a>
+        <a href="/logout/">🚪 Logout</a>
+    </div>
+</div>
+
+<div class="container">
+
+    <a href="/buy/" class="btn">⬅ Back to Cars</a>
+
+    <div class="detail-card">
+
+        {% if car.image %}
+            <img class="detail-image"
+                 src="{{ car.image.url }}"
+                 alt="{{ car.company }} {{ car.model }}">
+        {% endif %}
+
+        <div class="detail-info">
+
+            <h1>{{ car.company }} {{ car.model }}</h1>
+
+            <p>📅 <strong>Year:</strong> {{ car.year }}</p>
+
+            <p class="price">💰 ₹{{ car.price }}</p>
+
+            <hr>
+
+            <h3>📝 Description</h3>
+            <p>{{ car.description }}</p>
+
+            <hr>
+
+            <h3>📞 Seller Contact</h3>
+            <p>{{ car.phone }}</p>
+
+            <div class="detail-buttons">
+
+                <a href="tel:{{ car.phone }}" class="btn">
+                    📞 Call Seller
+                </a>
+
+                <a href="https://wa.me/91{{ car.phone }}"
+                   class="btn">
+                    💬 WhatsApp Seller
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

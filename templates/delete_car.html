@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Car</title>
+</head>
+<body>
+
+<h1>🗑️ Delete Car</h1>
+
+<p>
+    क्या तुम
+    <strong>{{ car.company }} {{ car.model }}</strong>
+    को delete करना चाहते हो?
+</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Yes, Delete</button>
+</form>
+
+<br>
+
+<a href="{% url 'my_cars' %}">Cancel</a>
+
+</body>
+</html>

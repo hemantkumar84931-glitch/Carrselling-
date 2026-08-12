@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Cars</title>
+</head>
+<body>
+
+<h1>🚗 My Cars</h1>
+
+{% if cars %}
+    {% for car in cars %}
+
+        {% if car.image %}
+            <img src="{{ car.image.url }}" width="250"><br><br>
+        {% endif %}
+
+        <h2>{{ car.company }} {{ car.model }}</h2>
+
+        <p>📅 {{ car.year }}</p>
+        <p>💰 ₹{{ car.price }}</p>
+
+        <a href="{% url 'edit_car' car.id %}">✏️ Edit</a>
+
+        <form action="{% url 'delete_car' car.id %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit">🗑️ Delete</button>
+        </form>
+
+        <hr>
+
+    {% endfor %}
+{% else %}
+    <p>आपने अभी कोई car sell नहीं की है।</p>
+{% endif %}
+
+<a href="/buy/">← Back to Cars</a>
+
+</body>
+</html>
